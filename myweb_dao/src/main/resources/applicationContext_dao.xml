@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- DAO
+	<bean id="UserDao" class="com.zhangxx.dao.impl.UserDaoImpl"/> -->
+
+	<!-- 扫描DAO包下实现类的注解 -->
+	<context:component-scan base-package="com.zhangxx.dao.impl"></context:component-scan>
+
+	<!-- hibernate配置 start -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- 加载连接池 -->
+		<property name="dataSource" ref="dataSource" />
+		
+		<property name="hibernateProperties">
+			<!-- 以下属性在书写时不能省略hibernate -->
+			 <props> 
+			 	<!-- 可以将向数据库发送的sql显示出来 -->
+			 	<prop key="hibernate.show_sql">true</prop> 
+			 	<!-- 格式化sql -->
+			 	<prop key="hibernate.format_sql">true</prop> 
+			 	<!-- hibernate的方言 -->
+			 	<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+				<!-- 自动创建表 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop> 
+				<!-- 用于设置事务提交方式 -->
+				<prop key="hibernate.connection.autocommit">false</prop>				
+				<!-- 设置事务隔离级别 -->
+				<prop key="hibernate.connection.isolation ">4</prop>		
+				<!-- 绑定线程 -->	
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext </prop>
+				<!-- 二级缓存 设置 -->
+				<prop key="cache.use_second_level_cache">false</prop>				
+				<prop key="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<!-- 查询缓存 设置 -->
+				<prop key="cache.use_query_cache">false</prop>				
+			</props>
+			<!-- 上述的配置可以简写成以下 -->
+			<!--<value>
+				hibernate.show_sql=true				
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect				
+				hibernate.hbm2ddl.auto=update				
+				hibernate.format_sql=true	
+			</value> -->
+		</property>
+
+	     <!-- 自动扫描注解方式配置的hibernate类文件   value是包名 -->
+        <property name="packagesToScan">
+            <list>
+                 <value>com.zhangxx.domain</value>
+             </list>
+        </property>
+
+		<!-- 加载hibernate的Xxx.hbm.xml配置文件 -->
+		<!--<property name="mappingResources">
+			<list>
+				<value>com/zhangxx/domain/User.hbm.xml</value>
+			</list>
+		</property>-->
+		<!-- <property name="mappingLocations"> 
+			<list> <value>classpath:com/zhangxx/domain/User.hbm.xml</value> </list> 
+			</property> 
+		<property name="mappingDirectoryLocations"> 
+			<list> <value>classpath:com/zhangxx/domain</value></list>
+		</property> -->
+
+	</bean>
+	<!-- hibernate配置 end -->
+
+	
+</beans>

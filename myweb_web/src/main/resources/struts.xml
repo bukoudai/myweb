@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 动态方法调用 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <!-- Debug模式 -->
+    <constant name="struts.devMode" value="true" />
+
+
+<!-- 
+    
+ -->
+    <!-- Add packages here -->
+    <include file="./myweb_admin.xml"/>
+    <include file="./myweb_visit.xml"/>
+
+</struts>

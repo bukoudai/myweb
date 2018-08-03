@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    
+    <package name="Admin" namespace="/Admin" extends="struts-default">
+		<!--管理界面首页-->
+        <action name="home" class="com.zhangxx.action.AdminAction" method="home">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/admin/Admin_home.jsp</result>
+        </action>
+        <!--  编辑日志界面-->
+        <action name="editui" class="com.zhangxx.action.AdminAction" method="editUI">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/admin/edit.jsp</result>
+        </action>
+   		<!-- 添加日志的异步请求 -->
+   		<action name="addArticle" class="com.zhangxx.action.AdminAction" method="addArticle"></action>
+        
+        <!-- 注册界面 -->
+        <action name="regist" class="com.zhangxx.action.AdminAction" method="regist">
+        <result name="success" type="dispatcher">/WEB-INF/jsp/admin/regist.jsp</result>
+        </action>
+        <!-- 注册的异步请求 -->
+   		<action name="registAjax" class="com.zhangxx.action.AdminAction" method="registAjax"></action>
+   		 <!-- 检查用户名的异步请求 -->
+   		<action name="checkUserNameAjax" class="com.zhangxx.action.AdminAction" method="checkUserNameAjax"></action>
+   		<!-- 还没使用 -->
+        <action name="*_*" class="com.zhangxx.action.{1}Action" method="{2}">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/{1}_{2}.jsp</result>
+            <result name="error" type="dispatcher">/WEB-INF/jsp/{1}_{2}.jsp</result>
+        
+        
+        </action>
+        
+        
+        <!--
+         <action name="*" class="com.zhangxx.action.HomeAction" method="home">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/{1}.jsp</result>
+        </action>
+
+        -->
+    </package>
+</struts>

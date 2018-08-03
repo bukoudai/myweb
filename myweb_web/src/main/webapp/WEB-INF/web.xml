@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>MyWeb3</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- spring3配置 Start  -->
+  <context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>classpath*:applicationContext*.xml</param-value>
+  </context-param>
+  
+  <listener>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+    <!-- spring3配置  end  -->
+    <!-- 字符编码配置 Start  -->
+<!--   <filter>
+	  <display-name>F_01_GenericEncodingFilter</display-name>
+	  <filter-name>F_01_GenericEncodingFilter</filter-name>
+	  <filter-class>com.zhangxx.web.filter.F_01GenericEncodingFilter</filter-class>
+  </filter>
+    <filter-mapping>
+	  <filter-name>F_01_GenericEncodingFilter</filter-name>
+	  <url-pattern>/*</url-pattern>
+  </filter-mapping> -->
+    <!-- 字符编码配置  End  -->
+      <!-- struts2配置 Start  -->
+  	<filter>
+		<filter-name>F_02_struts2Filter</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>F_02_struts2Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	  <!-- struts2配置  End  -->
+</web-app>

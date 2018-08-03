@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    
+    <package name="visit" namespace="/" extends="struts-default">
+		<!--访问首页-->
+        <action name="home" class="com.zhangxx.action.VisitAction" method="findAllArticle">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/visit/home.jsp</result>
+        </action>
+        <!-- 注册界面 -->
+        <action name="regist" class="com.zhangxx.action.VisitAction" method="regist">
+        <result name="success" type="dispatcher">/WEB-INF/jsp/visit/article.jsp</result>
+        </action>
+        <!-- 异步请求 -->
+   		<action name="registAjax" class="com.zhangxx.action.VisitAction" method="registAjax"></action>
+   		 
+   		 
+   		<!-- 还没使用 -->
+        <action name="*_*" class="com.zhangxx.action.{1}Action" method="{2}">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/{1}_{2}.jsp</result>
+            <result name="error" type="dispatcher">/WEB-INF/jsp/{1}_{2}.jsp</result>
+        
+        
+        </action>
+        
+        
+        <!--
+         <action name="*" class="com.zhangxx.action.HomeAction" method="home">
+            <result name="success" type="dispatcher">/WEB-INF/jsp/{1}.jsp</result>
+        </action>
+
+        -->
+    </package>
+</struts>
