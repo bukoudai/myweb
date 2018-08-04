@@ -22,7 +22,7 @@
       <script src="../../docs-assets/js/respond.min.js"></script>
     <![endif]-->
 
-<script src="${ pageContext.request.contextPath }/js/stackedit.min.js"></script>
+<script src="${ pageContext.request.contextPath }/js/stackedit.js"></script>
 
 <!--写转化函数-->
 <script type="text/javascript">

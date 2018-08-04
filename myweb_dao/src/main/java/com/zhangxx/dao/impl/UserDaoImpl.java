@@ -11,32 +11,30 @@ import org.springframework.stereotype.Repository;
 import com.zhangxx.dao.UserDao;
 import com.zhangxx.domain.User;
 
-
 @Repository("UserDao")
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
-
 
 	@Autowired
 	public void setSupperSessionFactory(SessionFactory sessionFactory) {
 		super.setSessionFactory(sessionFactory);
 	}
+
 	@Override
 	public User findByUsername(String username) throws SQLException {
-		String hql ="from User where username=?";
+		String hql = "from User where username=?";
 		List<User> findByNamedParam = (List<User>) this.getHibernateTemplate().find(hql, username);
-		if(findByNamedParam.size()==0){
+		if (findByNamedParam.size() == 0) {
 			return null;
 		}
-		
+
 		return findByNamedParam.get(0);
-		
+
 	}
 
 	@Override
 	public void save(User user) throws SQLException {
 		this.getHibernateTemplate().save(user);
-		
-		
+
 	}
 
 	@Override
@@ -51,11 +49,11 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	@Override
 	public User login(User user) throws SQLException {
-		
 
-		String hql ="from User where username=? and password=?";
-		List<User> findByNamedParam = (List<User>) this.getHibernateTemplate().find(hql, user.getUsername(),user.getPassword());
-		if(findByNamedParam.size()==0||findByNamedParam.size()!=1){
+		String hql = "from User where username=? and password=?";
+		List<User> findByNamedParam = (List<User>) this.getHibernateTemplate().find(hql, user.getUsername(),
+				user.getPassword());
+		if (findByNamedParam.size() == 0 || findByNamedParam.size() != 1) {
 			return null;
 		}
 		return findByNamedParam.get(0);

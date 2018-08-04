@@ -10,6 +10,7 @@
         <action name="home" class="com.zhangxx.action.VisitAction" method="findAllArticle">
             <result name="success" type="dispatcher">/WEB-INF/jsp/visit/home.jsp</result>
         </action>
+        
         <!-- 注册界面 -->
         <action name="regist" class="com.zhangxx.action.VisitAction" method="regist">
         <result name="success" type="dispatcher">/WEB-INF/jsp/visit/article.jsp</result>

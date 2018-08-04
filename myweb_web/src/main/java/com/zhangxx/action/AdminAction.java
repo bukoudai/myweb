@@ -7,18 +7,16 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.context.WebApplicationContext;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhangxx.domain.Article;
 import com.zhangxx.domain.User;
 import com.zhangxx.service.ArticleService;
 import com.zhangxx.service.UserService;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 
 @Controller()
